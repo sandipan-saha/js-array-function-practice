@@ -41,19 +41,47 @@ const characters = [
 //3. Get total number of characters by eye color
 //4. Get total number of characters in all the character names
 
+let elements = "";
+
 //***FILTER***
 //1. Get characters with mass greater than 100
-const massGreater100 = characters.filter((character) => character.mass > 100);
-console.log("Characters with mass greater than 100: ", massGreater100);
+function greaterMass() {
+  const massGreater100 = characters.filter((character) => character.mass > 100);
+  massGreater100.forEach((char) => (elements += "<li>" + char.name + "</li>"));
+  document.getElementById("mg100").innerHTML = elements;
+  document.getElementById("mg100").outerHTML = document.getElementById("mg100").outerHTML + "<br/>";
+  elements = "";
+}
+greaterMass();
+
 //2. Get characters with height less than 200
-const heightLesser200 = characters.filter((character) => character.height < 200);
-console.log("Characters with height lesser than 200: ", heightLesser200);
+function lesserHeight() {
+  const heightLesser200 = characters.filter((character) => character.height < 200);
+  heightLesser200.map((char) => (elements += "<li>" + char.name + "</li>"));
+  document.getElementById("hl200").innerHTML = elements;
+  document.getElementById("hl200").outerHTML = document.getElementById("hl200").outerHTML + "<br/>";
+  elements = "";
+}
+lesserHeight();
+
 //3. Get all male characters
-const allMale = characters.filter((character) => character.gender === "male");
-console.log("All male characters: ", allMale);
+function male() {
+  const allMale = characters.filter((character) => character.gender === "male");
+  allMale.forEach((char) => (elements += "<li>" + char.name + "</li>"));
+  document.getElementById("allm").innerHTML = elements;
+  document.getElementById("allm").outerHTML = document.getElementById("allm").outerHTML + "<br/>";
+  elements = "";
+}
+male();
+
 //4. Get all female characters
-const allFemale = characters.filter((character) => character.gender === "female");
-console.log("All female characters: ", allFemale);
+function female() {
+  const allFemale = characters.filter((character) => character.gender === "female");
+  allFemale.forEach((char) => (elements += "<li>" + char.name + "</li>"));
+  document.getElementById("allfm").innerHTML = elements;
+  document.getElementById("allfm").outerHTML = document.getElementById("allfm").outerHTML + "<br/>";
+}
+female();
 
 //***SORT***
 //1. Sort by mass
